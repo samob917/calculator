@@ -1,0 +1,47 @@
+.calculator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.numbers {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.number {
+    width: 25vw;
+    height: 15vh;
+    font-size: 36px;
+    background-color: aqua;
+    border: solid 1px black;
+}
+
+.operators {
+    display: flex;
+    flex-direction: column;
+}
+
+.operation {
+    width: 15vw;
+    height: 15vh;
+    font-size: 36px;
+    background-color: beige;
+    border: solid 1px black;
+}
+
+.display {
+    width: 92vw;
+    height: 10vh;
+    border: solid 1px black;
+}
+
+.buttons {
+    display: flex;
+    padding: 20px;
+}
