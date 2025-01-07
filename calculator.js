@@ -34,8 +34,21 @@ console.log(`${divide(6, 2)} should return 3`);
 console.log(`${divide(-81,5)} should return -16.2`);
 console.log(`${divide(12, 0)} should return "NO DIVIDING BY 0 LOSER."`);
 
+function operate(a, b, operator) {
+    switch (operator) {
+        case "+":
+            return add(a,b);
+        case "-": 
+            return subtract(a,b);
+        case "x":
+            return multiply(a,b);
+        case "/":
+            return divide(a,b);
+    };
+};
+
 console.log("Input test - addition");
-let num1 = Number(prompt("Pick a number"));
-let operator = "+";
-let num2 = Number(prompt("Pick a number"));
-console.log(`${add(num1, num2)}, is this what you expected?`);
+let a = Number(prompt("Pick number a"));
+let operator = prompt("Select operator");
+let b = Number(prompt("Pick number b"));
+console.log(`${operate(a, b, operator)}, is this what you expected?`);
