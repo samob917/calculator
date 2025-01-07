@@ -46,9 +46,6 @@ function operate(a, b, operator) {
             return divide(a,b);
     };
 };
-
-console.log("Input test - addition");
-let a = Number(prompt("Pick number a"));
-let operator = prompt("Select operator");
-let b = Number(prompt("Pick number b"));
-console.log(`${operate(a, b, operator)}, is this what you expected?`);
+let a = 0;
+let operator = "+";
+let b = 0;
