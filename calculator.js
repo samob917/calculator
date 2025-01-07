@@ -33,3 +33,9 @@ console.log("Division tests");
 console.log(`${divide(6, 2)} should return 3`);
 console.log(`${divide(-81,5)} should return -16.2`);
 console.log(`${divide(12, 0)} should return "NO DIVIDING BY 0 LOSER."`);
+
+console.log("Input test - addition");
+let num1 = Number(prompt("Pick a number"));
+let operator = "+";
+let num2 = Number(prompt("Pick a number"));
+console.log(`${add(num1, num2)}, is this what you expected?`);
