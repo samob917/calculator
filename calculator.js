@@ -51,11 +51,17 @@ let operator = "+";
 let b = 0;
 
 function addNumber(e) {
-    console.log(e);
     let display  = document.querySelector(".display");
     display.textContent += e.target.textContent ;
 };
 
-let buttons = document.querySelectorAll(".number")
-console.log(buttons)
-buttons.forEach((button) => button.addEventListener("click", addNumber))
+function addClear() {
+    let display  = document.querySelector(".display");
+    display.textContent = "" ;
+};
+
+let buttons = document.querySelectorAll(".number");
+buttons.forEach((button) => button.addEventListener("click", addNumber));
+
+let clear = document.querySelector(".clear");
+clear.addEventListener("click", addClear);
