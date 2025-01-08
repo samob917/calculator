@@ -60,8 +60,15 @@ function addClear() {
     display.textContent = "" ;
 };
 
+function addOperation(e) {
+    let display = document.querySelector(".display");
+    display.textContent += ` ${e.target.textContent} `;
+};
 let buttons = document.querySelectorAll(".number");
 buttons.forEach((button) => button.addEventListener("click", addNumber));
 
 let clear = document.querySelector(".clear");
 clear.addEventListener("click", addClear);
+
+let operations = document.querySelectorAll(".operation");
+operations.forEach((operation) => operation.addEventListener("click", addOperation));
