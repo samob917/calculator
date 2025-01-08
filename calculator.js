@@ -35,6 +35,7 @@ console.log(`${divide(-81,5)} should return -16.2`);
 console.log(`${divide(12, 0)} should return "NO DIVIDING BY 0 LOSER."`);
 
 function operate(a, b, operator) {
+    continueCalc = true;
     switch (operator) {
         case "+":
             return add(a,b);
@@ -52,17 +53,37 @@ let b = 0;
 
 function addNumber(e) {
     let display  = document.querySelector(".display");
+    if (continueCalc) {
+        display.textContent = "";
+        continueCalc = false;
+        anyInputs = true;
+    }
     display.textContent += e.target.textContent ;
 };
 
 function addClear() {
     let display  = document.querySelector(".display");
     display.textContent = "" ;
+    continueCalc = false;
+    anyInputs = false
+    a = 0;
+    b = 0;
+    operator = ""
 };
 
 function addOperation(e) {
     let display = document.querySelector(".display");
-    display.textContent += ` ${e.target.textContent} `;
+    if (!(anyInputs)) {
+        a = Number(display.textContent)
+        anyInputs = true;
+        display.textContent = "";
+        operator = e.target.textContent;
+    } else {
+        b = Number(display.textContent);
+        a = operate(a,b, operator);
+        display.textContent = a;
+        anyInputs = false;
+    }
 };
 let buttons = document.querySelectorAll(".number");
 buttons.forEach((button) => button.addEventListener("click", addNumber));
@@ -72,3 +93,7 @@ clear.addEventListener("click", addClear);
 
 let operations = document.querySelectorAll(".operation");
 operations.forEach((operation) => operation.addEventListener("click", addOperation));
+
+let anyInputs = false;
+let continueCalc = false;
+
