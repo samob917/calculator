@@ -22,6 +22,14 @@
     border: solid 1px black;
 }
 
+.clear {
+    width: 50vw;
+    height: 15vh;
+    font-size: 36px;
+    background-color: rgb(226, 220, 54);
+    border: solid 1px black;
+}
+
 .operators {
     display: flex;
     flex-direction: column;
