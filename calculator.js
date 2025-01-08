@@ -49,3 +49,13 @@ function operate(a, b, operator) {
 let a = 0;
 let operator = "+";
 let b = 0;
+
+function addNumber(e) {
+    console.log(e);
+    let display  = document.querySelector(".display");
+    display.textContent += e.target.textContent ;
+};
+
+let buttons = document.querySelectorAll(".number")
+console.log(buttons)
+buttons.forEach((button) => button.addEventListener("click", addNumber))
