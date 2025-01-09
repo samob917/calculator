@@ -50,40 +50,59 @@ function operate(a, b, operator) {
 let a = 0;
 let operator = "+";
 let b = 0;
+let firstInput = true;
+let clearDisplay = false;
+
+/*
+What needs to happen: 
+when a number is typed, it is stored as textContent. As soon as an
+operation is pressed, the number is stored. When a new number is typed
+it overwrites the first number. Next time an operation occurs, we replace
+the text with the operation from the first two numbers. 
+
+States: 
+nothing in a and nothing in b
+    start filling a
+a full nothing in b
+    start filling b
+a full b full
+    run a calculation and put that into a
+*/
 
 function addNumber(e) {
     let display  = document.querySelector(".display");
-    if (continueCalc) {
+    console.log(clearDisplay)
+    if (clearDisplay) {
         display.textContent = "";
-        continueCalc = false;
-        anyInputs = true;
+        clearDisplay = false;
     }
     display.textContent += e.target.textContent ;
 };
 
 function addClear() {
     let display  = document.querySelector(".display");
-    display.textContent = "" ;
-    continueCalc = false;
-    anyInputs = false
+    display.textContent = "";
+    firstInput = true;
     a = 0;
     b = 0;
-    operator = ""
+    operator = "";
+    clearDisplay = false;
 };
 
 function addOperation(e) {
     let display = document.querySelector(".display");
-    if (!(anyInputs)) {
-        a = Number(display.textContent)
-        anyInputs = true;
-        display.textContent = "";
+    if (firstInput) {
+        a = Number(display.textContent);
+        firstInput = false;
         operator = e.target.textContent;
+        clearDisplay = true;
     } else {
         b = Number(display.textContent);
-        a = operate(a,b, operator);
+        a = operate(a, b, operator);
+        operator = e.target.textContent;
         display.textContent = a;
-        anyInputs = false;
-    }
+        clearDisplay = true;
+    };
 };
 let buttons = document.querySelectorAll(".number");
 buttons.forEach((button) => button.addEventListener("click", addNumber));
@@ -94,6 +113,4 @@ clear.addEventListener("click", addClear);
 let operations = document.querySelectorAll(".operation");
 operations.forEach((operation) => operation.addEventListener("click", addOperation));
 
-let anyInputs = false;
-let continueCalc = false;
 
